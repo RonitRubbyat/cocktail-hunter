@@ -1,15 +1,21 @@
-const loadCocktails = async (searchType, search) => {
+const loadCocktails = async (searchType, search, datalimit) => {
     url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?${searchType}=${search}`;
 
     const res = await fetch(url);
     const data = await res.json();
-    displayCocktails(data.drinks);
+    displayCocktails(data.drinks, datalimit);
 };
 
 // display cards
-const displayCocktails = (drinks) => {
-    // console.log(drinks);
-
+const displayCocktails = (drinks, datalimit) => {
+    console.log(drinks);
+    const showAllBtn = document.getElementById('show-all-btn');
+    if (datalimit && drinks.length > 6) {
+        drinks = drinks.slice(0, 6);
+        showAllBtn.classList.remove('d-none');
+    } else {
+        showAllBtn.classList.add('d-none');
+    }
     const notFoundText = document.getElementById('not-found-text');
 
     const drinksCardContainer = document.getElementById('drinks-card-container');
@@ -41,30 +47,30 @@ const displayCocktails = (drinks) => {
 };
 
 // search by api
-const searchItem = () => {
+const searchItem = datalimit => {
 
     const searchInput = document.getElementById('inputSearch');
 
     const search = searchInput.value;
 
     if (search.length === 1) {
-        loadCocktails('f', search);
+        loadCocktails('f', search, datalimit);
     } else {
-        loadCocktails('s', search)
+        loadCocktails('s', search, datalimit)
     }
 };
 
 // press enter
 document.getElementById('inputSearch').addEventListener('keydown', e => {
     if (e.key === 'Enter') {
-        searchItem();
+        searchItem(5);
         spinner(true);
     }
 });
 
 // click on search button
 const searchBtn = () => {
-    searchItem();
+    searchItem(5);
     spinner(true);
 }
 
@@ -93,6 +99,11 @@ const displayCocktailDetails = detail => {
             `;
 };
 
+// show all drinks
+const showAllDrinks = () => {
+    searchItem();
+}
+
 // spinner togele
 const spinner = isStart => {
     const spinnerId = document.getElementById('spinnerID');
@@ -104,4 +115,4 @@ const spinner = isStart => {
 };
 
 // always show
-loadCocktails('s', 'margarita');
+loadCocktails('s', 'margarita', 5);

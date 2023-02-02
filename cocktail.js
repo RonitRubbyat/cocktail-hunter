@@ -11,17 +11,14 @@ const displayCocktails = (drinks) => {
     // console.log(drinks);
 
     const notFoundText = document.getElementById('not-found-text');
-    if (drinks === null) {
-        notFoundText.classList.remove('d-none');
-    } else {
-        notFoundText.classList.add('d-none');
-    }
 
     const drinksCardContainer = document.getElementById('drinks-card-container');
 
     drinksCardContainer.innerText = '';
-
-    if (drinks !== null) {
+    if (drinks === null) {
+        notFoundText.classList.remove('d-none');
+    } else {
+        notFoundText.classList.add('d-none');
         drinks.forEach(drink => {
             const div = document.createElement('div');
             div.classList.add('col');

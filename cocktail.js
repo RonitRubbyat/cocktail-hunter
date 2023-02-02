@@ -80,4 +80,4 @@ const spinner = isStart => {
 }
 
 // always show
-// loadCocktails('s','margarita');
+loadCocktails('s','margarita');

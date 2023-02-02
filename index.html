@@ -23,20 +23,45 @@
         </div>
     </header>
     <main class="mb-5">
+        <!-- card container -->
         <section>
             <div id="drinks-card-container" class="container row row-cols-1 row-cols-md-3 g-4 mx-auto">
 
             </div>
         </section>
+        <!-- not found text -->
         <section id="not-found-text" class="d-none">
             <h3 class="text-center text-warning my-5">Soory! Not Found Anything.</h3>
         </section>
+        <!-- spinner -->
         <section id="spinnerID" class="d-none">
             <div style="height: 50vh;" class="d-flex justify-content-center align-items-center">
                 <div class="spinner-border" role="status">
-                  <span class="visually-hidden">Loading...</span>
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-              </div>
+            </div>
+        </section>
+        <!-- Modal -->
+        <section>
+            <div class="modal fade" id="Cocktails-Details" tabindex="-1" aria-labelledby="Cocktails-DetailsLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="Cocktails-DetailsLabel">
+
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="cocktails-details" class="modal-body">
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 

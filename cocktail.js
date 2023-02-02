@@ -9,21 +9,24 @@ const loadCocktails = async (searchType, search, datalimit) => {
 // display cards
 const displayCocktails = (drinks, datalimit) => {
     // console.log(drinks);
+    const notFoundText = document.getElementById('not-found-text');
     const showAllBtn = document.getElementById('show-all-btn');
-    if (datalimit && drinks.length > 6) {
-        drinks = drinks.slice(0, 6);
-        showAllBtn.classList.remove('d-none');
+    if (drinks !== null) {
+        if (datalimit && drinks.length > 6) {
+            drinks = drinks.slice(0, 6);
+            showAllBtn.classList.remove('d-none');
+        } else {
+            showAllBtn.classList.add('d-none');
+        }
     } else {
         showAllBtn.classList.add('d-none');
+        notFoundText.classList.remove('d-none');
     }
-    const notFoundText = document.getElementById('not-found-text');
 
     const drinksCardContainer = document.getElementById('drinks-card-container');
 
     drinksCardContainer.innerText = '';
-    if (drinks === null) {
-        notFoundText.classList.remove('d-none');
-    } else {
+    if (drinks !== null) {
         notFoundText.classList.add('d-none');
         drinks.forEach(drink => {
             const div = document.createElement('div');

@@ -8,7 +8,7 @@ const loadCocktails = async (searchType, search, datalimit) => {
 
 // display cards
 const displayCocktails = (drinks, datalimit) => {
-    console.log(drinks);
+    // console.log(drinks);
     const showAllBtn = document.getElementById('show-all-btn');
     if (datalimit && drinks.length > 6) {
         drinks = drinks.slice(0, 6);
